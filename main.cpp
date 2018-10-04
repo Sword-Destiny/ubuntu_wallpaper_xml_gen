@@ -7,6 +7,12 @@
 
 using namespace std;
 
+/**
+ * 将当前路径下的图片构建为一个Ubuntu的背景xml配置文件,以实现自定义图片背景切换
+ * @param argc
+ * @param argv
+ * @return
+ */
 int main(int argc, char *argv[]) {
     char *cwd = get_current_dir_name();
     string type = ".jpg,.png,.jpeg,.svg,.gif,.bmp";
@@ -20,8 +26,7 @@ int main(int argc, char *argv[]) {
          "    <minute>00</minute>\n" <<
          "    <second>00</second>\n" <<
          "  </starttime>" << endl;
-    cout << "<!-- directory : " << (argc > 1 ? argv[1] : ".") << " -->" << endl;
-    vector<string> files = argc > 1 ? enum_dir(argv[1], type) : enum_dir(".", type);
+    vector<string> files = enum_dir(".", type);
     for (int i = 0; i < files.size(); ++i) {
         string file = files[i];
         string next_file = files[(i + 1) % files.size()];
