@@ -1,11 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include <ios>
+#include <unistd.h>
+#include <limits.h>
 #include "c_enum_file.h"
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
+    char *cwd = get_current_dir_name();
     string type = ".jpg,.png,.jpeg,.svg,.gif,.bmp";
     cout << "<!-- image type : " << type << " -->" << endl;
     cout << "<background>\n" <<
@@ -25,12 +28,12 @@ int main(int argc, char *argv[]) {
         cout <<
              "  <static>\n" <<
              "    <duration>55.0</duration>\n" <<
-             "    <file>/home/yuanhao/图片/" << file.c_str() << "</file>\n" <<
+             "    <file>" << cwd << "/" << file.c_str() << "</file>\n" <<
              "  </static>\n" <<
              "  <transition>\n" <<
              "    <duration>0.5</duration>\n" <<
-             "    <from>/home/yuanhao/图片/" << file.c_str() << "</from>\n" <<
-             "    <to>/home/yuanhao/图片/" << next_file.c_str() << "</to>\n" <<
+             "    <from>" << cwd << "/" << file.c_str() << "</from>\n" <<
+             "    <to>" << cwd << "/" << next_file.c_str() << "</to>\n" <<
              "  </transition>" << endl;
     }
     cout << "</background>" << endl;
