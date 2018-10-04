@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < files.size(); ++i) {
         string file = files[i];
         string next_file = files[(i + 1) % files.size()];
+        // 图片显示时间55秒,切换时间0.5秒,需要的自行修改
         cout <<
              "  <static>\n" <<
              "    <duration>55.0</duration>\n" <<
