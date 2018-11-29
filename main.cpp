@@ -14,7 +14,8 @@ using namespace std;
  * @return
  */
 int main(int argc, char *argv[]) {
-    char *cwd = get_current_dir_name();
+    char cwd[PATH_MAX];
+    getcwd(cwd,PATH_MAX);
     string type = ".jpg,.png,.jpeg,.svg,.gif,.bmp";
     cout << "<!-- image type : " << type << " -->" << endl;
     cout << "<background>\n" <<
